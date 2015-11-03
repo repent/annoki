@@ -45,3 +45,5 @@ group :development do
   gem 'spring'
 end
 
+# Add database schema to models
+gem 'annotate'
