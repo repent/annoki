@@ -1,3 +1,9 @@
+<div id='floatdiv'>
+  Hi, campers!
+</div>
+
+<% md = Redcarpet::Markdown.new(Redcarpet::Render::HTML) %>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -7,7 +13,7 @@
 
 <p>
   <strong>Content:</strong>
-  <%= @text.content %>
+  <%= md.render(@text.content).html_safe %>
 </p>
 
 <p>

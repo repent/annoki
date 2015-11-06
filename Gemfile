@@ -47,3 +47,7 @@ end
 
 # Add database schema to models
 gem 'annotate'
+
+gem 'awesome_print'
+# Rendering markdown
+gem 'redcarpet'

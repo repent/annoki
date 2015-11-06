@@ -1,3 +1,17 @@
 // Place all the styles related to the Texts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// http://www.jtricks.com/javascript/navigation/floating.html
+
+#floatdiv {
+  position:absolute;  
+  width:200px;
+  height:50px;
+  top: 0px;
+  right: 0px;  
+  padding:16px;
+  background:#FFFFFF;  
+  border: 0px; //2px solid #2266AA;  
+  z-index:100;
+}
