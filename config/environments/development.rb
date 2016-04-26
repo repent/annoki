@@ -38,4 +38,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  
+  # Allow debugging on the local network
+  config.web_console.whitelisted_ips = '10.0.0.5'
 end

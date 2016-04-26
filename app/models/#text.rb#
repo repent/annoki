@@ -61,8 +61,7 @@ class Text < ActiveRecord::Base
   def tag_para(html) # may contain tags, but not surrounding tags like <p>
     binding.pry
     html
-    
-    #link_to "#{@n+=1}. #{html}"
+    link_to "#{@n+=1}. #{html}"
   end
   def markdown(text)
     @html_options ||= { hard_wrap: true, filter_html: true, autolink: true }
