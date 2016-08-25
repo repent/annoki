@@ -16,6 +16,7 @@ class Text < ActiveRecord::Base
   #before_destroy :ensure_not_referenced_by_any_discussion
   
   include ActionView::Helpers::UrlHelper
+  include ActionView::Helpers::SanitizeHelper
   #include ActionView::Helpers::AssetTagHelper #
   
   delegate :url_helpers, to: 'Rails.application.routes'
@@ -72,6 +73,11 @@ class Text < ActiveRecord::Base
   def each # returns nokogiri xml elements
     frag = Nokogiri::HTML.fragment(markdown(content))
     frag.elements.each { |e| yield e }
+  end
+
+  def plain_content(length)
+    text = length ? content.truncate(length, separator: ' ') : content
+    strip_tags markdown(text)
   end
   
   private

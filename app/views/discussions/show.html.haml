@@ -1,0 +1,14 @@
+%p#notice= notice
+%strong
+  %p
+    Discussion of the following extract from #{link_to @discussion.text.name, text_path(@discussion.text)}:
+= @discussion.extract
+- @discussion.each_comment do |comment|
+  %div{class: "depth#{comment.depth}"}= comment.content
+  %div{class: "depth#{comment.depth+1}"}= render partial: 'comments/form', locals: {comment: Comment.new(discussion: @discussion, parent: comment), reply: true}
+
+= render partial: 'comments/form', locals: {comment: Comment.new(discussion: @discussion)}
+
+= link_to 'Edit', edit_discussion_path(@discussion)
+|
+= link_to 'Back', discussions_path

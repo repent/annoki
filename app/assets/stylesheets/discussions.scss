@@ -1,3 +1,17 @@
 // Place all the styles related to the Discussions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.depth0 {
+  text-indent: 0;
+  border-top-color: black;
+  border-top-width: 1pt;
+  border-top-style: solid;
+  // text-transform: uppercase;
+  // background-color: red;
+}
+
+div.depth1 {
+  text-indent: 3em;
+  // background-color: blue;
+}

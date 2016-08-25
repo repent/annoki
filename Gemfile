@@ -47,6 +47,9 @@ group :development do
 
   # Add database schema to models
   gem 'annotate'
+
+  gem 'erb2haml'
+  gem 'pry-rails'
 end
 
 gem 'awesome_print'
@@ -55,4 +58,4 @@ gem 'redcarpet'
 # Searching and parsing HTML
 gem 'nokogiri'
 
-gem 'pry-rails', :group => :development
+gem 'haml'

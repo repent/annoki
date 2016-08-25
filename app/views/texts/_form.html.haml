@@ -1,0 +1,27 @@
+= form_for(@text) do |f|
+  - if @text.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@text.errors.count, "error")
+        prohibited this text from being saved:
+      %ul
+        - @text.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name
+  .field
+    = f.label :content
+    %br/
+    = f.text_area :content
+  .field
+    = f.label :author
+    %br/
+    = f.text_field :author
+  .field
+    = f.label :date
+    %br/
+    = f.date_select :date
+  .actions
+    = f.submit

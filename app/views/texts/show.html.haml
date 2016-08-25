@@ -1,0 +1,21 @@
+/
+  <div id='floatdiv'>
+  <a href='#' onclick='alert(describeSelection(document.getSelection));'>Comment</a>
+  </div>
+  
+  alert(document.getSelection().anchorOffset);
+- md = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+%p#notice= notice
+%p
+  %strong Name:
+  = @text.name
+%p
+  %strong Author:
+  = @text.author
+%p
+  %strong Date:
+  = @text.date
+= @text.rich_content
+= link_to 'Edit', edit_text_path(@text)
+|
+= link_to 'Back', texts_path
