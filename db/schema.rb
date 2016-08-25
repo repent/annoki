@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160419160638) do
+ActiveRecord::Schema.define(version: 20160426170239) do
 
 # Could not dump table "comments" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20160419160638) do
     t.integer  "text_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "location"
   end
 
   add_index "discussions", ["text_id"], name: "index_discussions_on_text_id"

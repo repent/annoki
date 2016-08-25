@@ -16,11 +16,13 @@ class Text < ActiveRecord::Base
   #before_destroy :ensure_not_referenced_by_any_discussion
   
   include ActionView::Helpers::UrlHelper
+  #include ActionView::Helpers::AssetTagHelper #
+  
+  delegate :url_helpers, to: 'Rails.application.routes'
   
   def rich_content
     #doc = Nokogiri::HTML(html)
     frag = Nokogiri::HTML.fragment(markdown(content))
-    
     @n=0
     
     frag.elements.each do |e|
@@ -57,12 +59,29 @@ class Text < ActiveRecord::Base
     frag.to_html.html_safe
   end
   
+  def [](i)
+    # Access nth element like an array
+    #raise unless i.class == Fixnum
+    each do |p|
+      return p.to_html.html_safe if i == 1
+      i -= 1
+    end
+    nil
+  end
+  
+  def each # returns nokogiri xml elements
+    frag = Nokogiri::HTML.fragment(markdown(content))
+    frag.elements.each { |e| yield e }
+  end
+  
   private
   def tag_para(html) # may contain tags, but not surrounding tags like <p>
-    binding.pry
-    html
-    
-    #link_to "#{@n+=1}. #{html}"
+    #binding.pry
+    #html
+    #link_to html, url_helpers.new_comment_path(data: { paragraph: @n+=1 } )
+    link_to html, url_helpers.new_comment_path( data: { text_id: self, paragraph: @n+=1 } )
+    #url_helpers.new_comment_path
+    #"#{@n+=1}. #{html}"
   end
   def markdown(text)
     @html_options ||= { hard_wrap: true, filter_html: true, autolink: true }

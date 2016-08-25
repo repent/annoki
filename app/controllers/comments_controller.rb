@@ -14,9 +14,14 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @text_id = params[:text_id]
+    @text_id = params[:data][:text_id].to_i
+    @paragraph = params[:data][:paragraph].to_i
+    @text = Text.find(@text_id)
     
-    @comment = Comment.new
+    # does the discussion exist?
+    @discussion = Discussion.where( text: @text, location: @paragraph ).first_or_create
+    
+    @comment = Comment.new(discussion: @discussion)
   end
 
   # GET /comments/1/edit
@@ -71,6 +76,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:discussion_id, :text_id, :content)
+      params.require(:comment).permit(:discussion_id, :text_id, :content, :data)
     end
 end

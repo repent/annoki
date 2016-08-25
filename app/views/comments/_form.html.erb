@@ -11,10 +11,19 @@
     </div>
   <% end %>
   
-  <%= f.hidden_field :text_id, value: @text_id %>
-
+  <p>
+    <%= @text[@paragraph] %>
+  </p>
+  
+  <%# f.hidden_field :text_id, value: @text_id %>
+  <%= f.hidden_field :discussion_id, value: @discussion_id %>
+  
+  <% @discussion.each do |c| %>
+    <%= c.to_html %>
+  <% end %>
+  
   <div class="field">
-    <%= f.label :content %><br>
+    <%= f.label :content, 'Your comment:' %>
     <%= f.text_field :content %>
   </div>
   <div class="actions">

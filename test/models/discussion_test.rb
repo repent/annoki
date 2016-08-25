@@ -6,6 +6,7 @@
 #  text_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  location   :integer
 #
 
 require 'test_helper'

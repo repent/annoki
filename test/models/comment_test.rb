@@ -7,6 +7,7 @@
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  content       :text
+#  parent        :reference
 #
 
 require 'test_helper'
