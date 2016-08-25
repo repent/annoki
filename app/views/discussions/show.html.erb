@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Text:</strong>
-  <%= @discussion.text %>
+  <strong>Discussion of the following extract from <%= link_to @discussion.text.name, text_path(@discussion.text) %>:</strong>
+  <%= @discussion.extract %>
 </p>
 
 <%= link_to 'Edit', edit_discussion_path(@discussion) %> |

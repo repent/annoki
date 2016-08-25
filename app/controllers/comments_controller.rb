@@ -20,7 +20,6 @@ class CommentsController < ApplicationController
     
     # does the discussion exist?
     @discussion = Discussion.where( text: @text, location: @paragraph ).first_or_create
-    
     @comment = Comment.new(discussion: @discussion)
   end
 

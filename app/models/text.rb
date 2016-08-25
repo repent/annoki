@@ -76,12 +76,19 @@ class Text < ActiveRecord::Base
   
   private
   def tag_para(html) # may contain tags, but not surrounding tags like <p>
-    #binding.pry
+    # Super-simple: no link
     #html
-    #link_to html, url_helpers.new_comment_path(data: { paragraph: @n+=1 } )
-    link_to html, url_helpers.new_comment_path( data: { text_id: self, paragraph: @n+=1 } )
-    #url_helpers.new_comment_path
-    #"#{@n+=1}. #{html}"
+
+    # Simple style: new comment form
+    #link_to html, url_helpers.new_comment_path( data: { text_id: self, paragraph: @n+=1 } )
+
+    # Complex style: show discussion (which will include ability to comment)
+    # BUT ids are needed to create a valid route to show
+    #link_to html, url_helpers.discussion_path( data: { text_id: self, paragraph: @n+=1 } )
+
+    # Hardcore: create dicussions that don't exist to get ids
+    link_to html, url_helpers.discussion_path(
+      Discussion.where( text_id: self, location: @n+=1 ).first_or_create )
   end
   def markdown(text)
     @html_options ||= { hard_wrap: true, filter_html: true, autolink: true }

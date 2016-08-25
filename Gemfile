@@ -44,10 +44,10 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-end
 
-# Add database schema to models
-gem 'annotate'
+  # Add database schema to models
+  gem 'annotate'
+end
 
 gem 'awesome_print'
 # Rendering markdown

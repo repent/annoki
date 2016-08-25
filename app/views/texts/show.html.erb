@@ -26,7 +26,7 @@ alert(document.getSelection().anchorOffset);-->
 <%# md.render(@text.content).html_safe %>
 <%= @text.rich_content %>
 
-<%= link_to 'Whatever', new_comment_path(text_id: @text) %>
+<%# link_to 'Whatever', new_comment_path(text_id: @text) %>
 
 <%= link_to 'Edit', edit_text_path(@text) %> |
 <%= link_to 'Back', texts_path %>

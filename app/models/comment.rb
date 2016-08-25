@@ -12,5 +12,19 @@
 
 class Comment < ActiveRecord::Base
   belongs_to :discussion
-  belongs_to :parent, class_name: 'Comment'
+  belongs_to :parent, class_name: Comment
+  has_many :children, class_name: Comment, foreign_key: 'parent_id' #-> { where(parent: self) }, class_name: 'Comment'
+
+  def self_with_children
+    c = [ self ]
+    self.children.each do |child|
+      c += child.self_with_children
+    end
+    c
+  end
+
+  def depth # 0 = top level, 1 = has a top-level parent, etc
+    return 0 if parent = nil
+    parent.depth + 1
+  end
 end
